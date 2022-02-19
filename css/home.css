@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');  
+
+html {
+    font-family: 'Varela Round', sans-serif;
+    scroll-behavior: smooth;
+}
+
+.background {
+    width: 100%;
+    height: 100%;
+}
+
+.navbar {
+    background-color: transparent;
+    height: 80px;
+    font-family: 'Varela Round', sans-serif;
+
+}
+
+.h-divider {
+    width: 96%;
+    
+    margin-left: 2%;
+    box-shadow: 0 20px 20px -20px lightgrey;
+}
+
+.container {
+    font-family: 'Varela Round', sans-serif;
+}
+
+.our-stuff {
+    padding-bottom: 10%;
+}
+
+.home-quote {
+    text-align: center;
+    padding-top: 10%;
+    padding-bottom: 7%;
+}
+
+.summary-info {
+    color: black !important;
+    padding-left: 30%;
+    padding-right: 30%;
+}
+
+.features {
+    padding-top: 10%;
+}
+
+.feature-nav-bar {
+    padding-top: 10%;
+    padding-left: 10%;
+}
+
+.tabcontent {
+    padding-top: 10%;
+}
+
+/* Search */
+.search {
+    padding-top: 15%;
+}
+
+.search button {
+    background-color: #898c90;
+    padding-right: 2%;
+}
+
+.search button:hover {
+    background-color: #737578;
+}
+
+.search button::after {
+    background-color: #898c90;
+
+}
+
+#search-button:focus {
+    box-shadow: none;
+
+}
+
+#search-input:focus {
+    outline:none;
+    box-shadow: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Button */
+button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    cursor:pointer;
+    overflow: hidden;
+    color: #845e82;
+    font-size: 140%;  
+    border:  2px solid #845e82;
+    border-radius: 15px;
+    outline:none;
+    padding-right: 1%;
+    padding-left: 1%;
+}
+
+button:hover {
+    background:#845e82;
+    color: #ebecf0;
+}
+
+/* Nav items */
+.nav-pills >li > a.active {
+    background-color: #898c90 !important;
+}
+
+.nav-link {
+    color: #898c90;
+    padding-top: 7%;    
+}
+
+.nav-link:hover {
+    color: black;
+}
+
+/* Icons */
+#home-button {
+    position: absolute;
+    top: 10%;
+    left: 1.2%;
+    width: 20%;
+    height: 90%;
+}
+
+#sign-up {
+    position: absolute;
+    top: 20%;    
+    right: 2%;
+}
+
+#login {
+    position: absolute;
+    top: 30%;
+    right: 12%;
+}
+
+/* Text Format */
+h1 {
+    color: black;
+    font-size: 280%;
+    font-weight: bold;
+}
+
+h2 {
+    text-decoration: none;
+    font-size: 150%;
+}
+
+h3 {
+    color: black;
+    font-size: 150%;
+}
+
+p {
+    font-size: 120%;
+    margin:0;
+    padding:3px;
+}
+
