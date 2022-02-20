@@ -115,69 +115,120 @@
         <div class="row stock-quiz" id="quiz">
             <div class="col-md-6">
                 <h1>Find your ideal sustainable stocks</h1>
-                <form class="quiz-form" onsubmit="return doForm()">   
+                <form class="quiz-form">   
                     <br>
                     <h3>How much will you spend on stocks per year?</h3>
                     <div class="form-check form-check-inline" id="money">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="$0-50">
+                        <input class="form-check-input" onclick="question1('$0-$50')" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="$0-50">
                         <label class="form-check-label" for="inlineRadio1">$0-$50</label>
                       </div>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="$50-200">
+                        <input class="form-check-input" onclick="question1('$50-200')" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="$50-200">
                         <label class="form-check-label" for="inlineRadio2">$50-200</label>
                       </div>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="$200-1000">
+                        <input class="form-check-input" onclick="question1('$200-1000')" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="$200-1000">
                         <label class="form-check-label" for="inlineRadio3">$200-1000</label>
                       </div>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="$1000-5000">
-                        <label class="form-check-label" for="inlineRadio3">$1000-5000</label>
+                        <input class="form-check-input" onclick="question1('$1000-5000')" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="$1000-5000">
+                        <label class="form-check-label" for="inlineRadio4">$1000-5000</label>
                     </div>
 
                       <h3>Which type of sustainability is most important to you?</h3>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Environment">
-                        <label class="form-check-label" for="inlineCheckbox1">Environment</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Social">
-                        <label class="form-check-label" for="inlineCheckbox2">Social</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3 " value="Governance">
-                        <label class="form-check-label" for="inlineCheckbox2">Governance</label>
-                      </div>
+                      <div class="form-check form-check-inline" id="money">
+                      <input class="form-check-input" onclick="question2('Environment')" type="radio" name="inlineRadioOptions2" id="inlineRadio1" value="$0-50">
+                      <label class="form-check-label" for="inlineRadio5">Environment</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" onclick="question2('Social')" type="radio" name="inlineRadioOptions2" id="inlineRadio2" value="$50-200">
+                      <label class="form-check-label" for="inlineRadio6">Social</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" onclick="question2('Governance')" type="radio" name="inlineRadioOptions2" id="inlineRadio3" value="$200-1000">
+                      <label class="form-check-label" for="inlineRadio7">Governance</label>
+                    </div>
 
                       <h3>Long-term or Short-term stocks?</h3>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="Long Term">
-                        <label class="form-check-label" for="inlineCheckbox1">Long Term</label>
+                      <div class="form-check form-check-inline" id="money">
+                      <input class="form-check-input" onclick="question3('Long Term')" type="radio" name="inlineRadioOptions3" id="inlineRadio1" value="$0-50">
+                        <label class="form-check-label" for="inlineRadio1">Long term</label>
                       </div>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="Short Term">
-                        <label class="form-check-label" for="inlineCheckbox2">Short Term</label>
-                      </div>   
+                        <input class="form-check-input" onclick="question3('Short Term')" type="radio" name="inlineRadioOptions3" id="inlineRadio2" value="$50-200">
+                        <label class="form-check-label" for="inlineRadio2">Short Term</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" onclick="question3('Both')" type="radio" name="inlineRadioOptions3" id="inlineRadio3" value="$50-200">
+                        <label class="form-check-label" for="inlineRadio3">Both</label>
+                      </div>
 
                       <div class="row">
-                        <a href="#our-feautres"><button type="submit" name ="continue" id="continue">Find My Stocks</button></a>
+                        <a href="#quiz"><button type="button" onclick="doForm()" name ="continue" id="continue">Find My Stocks</button></a>
                     </div>
                 </form>
 
+                <h2 id="result"></h2>
+                <h2 id="result2"></h2>
+
                 <script>
+                    var q1 = "";
+                    var q2 = "";
+                    var q3 = "";
+                    var stocks;
+
+                    function question1(input) {
+                        q1 = input;
+                    }
+
+                    function question2(input) {
+                        q2 = input;
+                    }
+
+                    function question3(input) {
+                        q3 = input;
+                    }
+
                     function doForm() {
-                        var r1 = document.getElementById("inlineRadio1");
-                        var r2 = document.getElementById("inineRadio2");
-                        var r3 = document.getElementById("inlineRadio3");
-                        var r4 = document.getElementById("inlineRadio4");  
+                        //Stock Recommendations
+                        if (q3 === 'Long Term' && q1 === '$0-$50') {
+                            stocks  = new Array(['TX'],['KIM'],['ABG'], ['MT']);
+                        } else if (q3 === 'Short Term' && q1 === '$0-$50') {
+                            stocks  = new Array(['TX'],['KIM'],['BIIB'], ['MT']);
+                        } else if (q3 === 'Long Term' && (q1 === '$50-200' || q1 === '$200-1000')) {
+                            stocks  = new Array(['NEM'],['LIN'],['ABG'], ['MT']);
+                        } else if (q3 === 'Short Term' && (q1 === '$50-200' || q1 === '$200-1000')) {
+                            stocks  = new Array(['AMZN'],['BIIB'],['TX'], ['MT']);
+                        } else if (q3 === 'Long Term' && q1 === '$1000-5000') {
+                            stocks  = new Array(['LIN'],['BYND'],['HASI'], ['MSFT']);
+
+                        } else if (q3 === 'Short Term' && q1 === '$1000-5000') {
+                            stocks  = new Array(['BIIB'],['AAPL'],['NVDA'], ['AMZN']);
+
+                        } else {
+                            stocks  = new Array(['LIN'],['AAPL'],['TX'], ['MT']);
+                        }
+
+                        document.getElementById("stock1").innerHTML = stocks[0];
+                        document.getElementById("stock2").innerHTML = stocks[1];
+                        document.getElementById("stock3").innerHTML = stocks[2];
+                        document.getElementById("stock4").innerHTML = stocks[3];
+
+                        document.getElementById("result").innerHTML = "You have selected " + q1 + " " + q2 + " " +  q3 + " "; 
                     }
                 </script>
                 <br>
 
             </div>
 
-            <div class="col-md-6">
-                
+            <div class="col-md-6 piechart">
+                <h2><b>Your Stock Recommendations: </b></h2>
+                <p id="stock1"></p>
+                <p id="stock2"></p>
+                <p id="stock3"></p>
+                <p id="stock4"></p>
+
+
             </div>
         </div>
     </section>
