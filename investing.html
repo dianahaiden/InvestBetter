@@ -12,6 +12,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 
     <!-- CSS file link -->
     <link rel="stylesheet" href="./css/investing.css">
@@ -194,9 +196,43 @@
 
             </div>
             <div class="col-md-6">
-                <!-- Insert some sort of diagram here -->
+                <div id="piechart" style="width: 500px; height: 500px;"></div>
             </div>
-        </div>
+
+            <script type="text/javascript">
+                google.charts.load('current', {'packages':['corechart']});
+                google.charts.setOnLoadCallback(drawChart);
+          
+                function drawChart() {
+          
+                  var data = google.visualization.arrayToDataTable([
+                    ['Task', 'Hours per Day'],
+                    ['Work',     11],
+                    ['Eat',      2],
+                    ['Commute',  2],
+                    ['Watch TV', 2],
+                    ['Sleep',    7]
+                  ]);
+          
+                  var options = {
+                    title: '',
+                    slices: {
+                        0: { color: '#E0BBE4' },
+                        1: { color: '#957DAD' },
+                        2: { color: '#BECAD3' },
+                        3: { color: '#D291BC' },
+                        4: { color: '#FEC8D8' }
+                    },
+                    legend: 'none'
+                  };
+          
+                  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+          
+                  chart.draw(data, options);
+                }
+              </script>
+            </div>
+        
     </section>
 
     <div class="background">
@@ -212,7 +248,7 @@
                 <h1>Long Term Investments</h1>
                 <br>
                 <p>Our future depends on sustainability and companies that practice this actually perform better than those who don't! Don't believe me? Check out this <a href="https://www.forbes.com/sites/newyorklifeinvestments/2020/08/17/dispelling-the-5-myths-of-sustainable-investing/?sh=733707e5703f">Link</a>
-                    ! And invest in yourself and the future.
+                    ! And invest in yourself and the
                 </p>
 
                 <br>
