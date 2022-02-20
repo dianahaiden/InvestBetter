@@ -10,13 +10,6 @@ html {
     height: 100%;
 }
 
-.navbar {
-    background-color: transparent;
-    height: 80px;
-    font-family: 'Varela Round', sans-serif;
-
-}
-
 .h-divider {
     width: 96%;
     
@@ -24,12 +17,23 @@ html {
     box-shadow: 0 20px 20px -20px lightgrey;
 }
 
+body {
+    overflow-x: hidden;  
+}
+
 .container {
     font-family: 'Varela Round', sans-serif;
 }
 
-.our-stuff {
-    padding-bottom: 10%;
+
+a {
+    text-decoration: none;
+}
+.navbar {
+    background-color: transparent;
+    height: 80px;
+    font-family: 'Varela Round', sans-serif;
+
 }
 
 .home-quote {
@@ -38,68 +42,29 @@ html {
     padding-bottom: 7%;
 }
 
-.summary-info {
-    color: black !important;
-    padding-left: 30%;
-    padding-right: 30%;
-}
 
-.features {
-    padding-top: 10%;
-}
-
-.feature-nav-bar {
-    padding-top: 10%;
-    padding-left: 10%;
-}
-
-.tabcontent {
-    padding-top: 10%;
-}
-
-.results {
-    padding-left: 8%;
-}
-
-.yay-info {
-    padding-top: 10%;
+.build-portfolio {
     text-align: center;
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-top: 10%;
 }
 
-/* Search */
-.search {
-    padding-top: 15%;
+.pichart {
+    text-align: center;
+
+    padding-top:1%;
 }
 
-.search button {
-    background-color: #898c90;
-    padding-right: 2%;
+.main-portfolio {
+    padding-top:10%;
+    text-align: center;
+    padding-bottom: 10%;
 }
 
-.search button:hover {
-    background-color: #737578;
+.stock-quiz {
+    padding-top: 10%;
+    padding-bottom: 10%;
 }
 
-.search button::after {
-    background-color: #898c90;
-
-}
-
-#search-button:focus {
-    box-shadow: none;
-
-}
-
-#search-input:focus {
-    outline:none;
-    box-shadow: none;
-}
-
-a {
-    text-decoration: none;
-}
 
 /* Button */
 button {
@@ -119,25 +84,6 @@ button {
 button:hover {
     background:#845e82;
     color: #ebecf0;
-}
-
-/* Nav items */
-.nav-pills >li > a.active {
-    background-color: #898c90 !important;
-}
-
-.nav-link {
-    color: #898c90;
-    padding-top: 7%;    
-}
-
-.nav-link:hover {
-    color: black;
-}
-
-/* hide scrollbar but allow scrolling */
-body {
-    overflow-x: hidden;  
 }
 
 
@@ -165,13 +111,27 @@ body {
 #start-investing {
     position: absolute;
     top: 30%;
-    right: 18%;
+    right: 19%;
 }
 
 #portfolio {
     position: absolute;
     top: 30%;
     right: 32%;
+}
+
+/* Nav items */
+.nav-pills >li > a.active {
+    background-color: #898c90 !important;
+}
+
+.nav-link {
+    color: #898c90;
+    padding-top: 7%;    
+}
+
+.nav-link:hover {
+    color: black;
 }
 
 /* Text Format */
@@ -187,8 +147,11 @@ h2 {
 }
 
 h3 {
-    color: black;
-    font-size: 150%;
+    font-size: 120%;
+}
+
+h5 {
+    font-size: 140%;
 }
 
 p {
