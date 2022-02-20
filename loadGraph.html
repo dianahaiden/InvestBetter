@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>replit</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<button onclick="plotData('ACN')">Accenture</button>
+  <button onclick="plotData('MSFT')">Microsoft</button>
+  <button onclick="plotData('LIN')">Lindle</button>
+  <!--div class containing canvas for graph-->
+  <div>
+		<canvas id="myChart"></canvas>
+	</div>
+
+	<script>
+    
+    function plotData(cmpName) {
+      const ctx = document.getElementById('myChart').getContext('2d');
+      var myChart;
+      var chartData = [];
+      var dataTitle = cmpName;
+      if (cmpName == 'ACN') {
+          chartData = [289.97, 282.16, 294.79, 317.68, 336.56, 319.92, 358.79, 357.40, 414.55, 353.58, 321.18, 321.18];
+      } else if (cmpName == 'MSFT') {
+          chartData = [235.77, 252.18, 249.68, 270.90, 284.91, 301.88, 281.92, 331.62, 330.59, 336.32, 310.98, 287.93, 287.93];
+      } else if (cmpName == 'LIN') {
+          chartData = [280.14, 285.84, 300.60, 289.10, 307.39, 314.59, 293.38, 319.20, 318.14, 346.43, 318.68, 302.86, 302.86];
+      } else {
+          chartData = [122.15, 131.46, 124.61, 136.96, 145.86, 151.83, 141.50, 149.80, 165.30, 177.57, 174.78, 167.30, 167.30];
+      }
+      // Sample Data from API Pull - https://yh-finance.p.rapidapi.com/stock/v3/get-chart || chart >> result >> timestamp
+      var timestamps = [1614574800, 1617249600, 1619841600, 1622520000, 1625112000, 1627790400, 1630468800, 1633060800, 1635739200, 1638334800, 1641013200, 1643691600, 1645218002];
+      
+      // Convert timestamps to human-readable dates
+      const labels = [];
+      var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+
+      for (var i of timestamps) {
+          var date = new Date(0);
+          date.setUTCSeconds(i)
+          labels.push(date.toLocaleDateString("en-US", options));
+      }
+
+      // Graph Setup
+      const data = {
+                labels: labels,
+                datasets: [{
+                  label: cmpName + ' Stock (Past Year)',
+
+                  // Sample Data from API Pull - https://yh-finance.p.rapidapi.com/stock/v3/get-chart || chart >> result >> indicators >> quote >> 0 >> close
+                  data: chartData,
+                  fill: false,
+                  borderColor: 'rgb(75, 192, 192)',
+                  tension: 0.1
+                }]
+          };
+      const config = {
+            type: 'line',
+            data: data,
+          };
+      const graphOptions = {
+              responsive: true,
+              maintainAspectRatio: false,
+              scales: {
+                  y: {
+                      beginAtZero: true
+          }
+        }
+      }
+
+      // Create graph 
+
+      myChart = new Chart(ctx,config,graphOptions);
+    }
+	</script>
+
+
+
+
+</body>
+
+</html>
