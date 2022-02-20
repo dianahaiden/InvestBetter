@@ -12,6 +12,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/app.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <!-- CSS file link -->
     <link rel="stylesheet" href="./css/home.css">
@@ -37,16 +39,20 @@
 
         <!-- Log in Button-->
         <a href="./login.html" id="login"><h2>Login</h2></a>
+
+        <!-- Short Term Invester -->
+        <a href="./investing.html" id="start-investing"><h2>Begin Investing</h2></a>
+
+         <!-- My Portfolio -->
+       <a href="./portfolio.html" id="portfolio"><h2>My Portfolio</h2></a>
     </nav>
     
     <!-- Divider under Header-->
     <div class="h-divider"></div>
 
-
-
     <section class="container">
         <!-- Main Body of page -->
-        <div class="home-quote">
+        <div class="home-quote" id="start-of-page">
             <div class="row">
                 <h1>Start Investing Sustainably</h1>
             </div>
@@ -58,7 +64,7 @@
 
             <br>
             <div class="row">
-                <a href="#our-feautres"><button type="submit" name ="continue" id="continue">Start Investing</button></a>
+                <a href="#our-feautres"><button type="submit" name ="continue" id="continue">Start Learning</button></a>
             </div>
         </div>
     </section>
@@ -165,7 +171,7 @@
                   // Get the element with id="defaultOpen" and click on it
                   document.getElementById("defaultOpen").click();
                   </script>
-        </div>
+            </div>
     </section>
 
     <div class="background">
@@ -179,18 +185,54 @@
                     <form action="" class="">
                         <div class="input-group mb-3">
                             <input id = "search-input" type="text" class="form-control form-control-lg" id="input" placeholder="Search Here">
-                            <button id="search-button" type="button" class="input-group-text btn-success"><i class="bi bi-search me-2"></i> Search</button>
+                            <button onclick="getData()" id="search-button" class="input-group-text btn-success"><i class="bi bi-search me-2"></i> Search</button>
                         </div>
                     </form>
 
-                  <script>
-                        const searchButton = document.getElementById('search-button');
-                        const searchInput = document.getElementById('search-input');
-                        searchButton.addEventListener('click', () => {
-                        const inputValue = searchInput.value;
-                        alert(inputValue);
-                        });
-                  </script>
+                    <div class="results">
+                        <div class="row">
+                            <div class="col">
+                                <p>Total ESG Score: </p>
+                                <p>ESG Performance: </p>    
+                            </div>
+                            <div class="col">
+                                <p id="totalESG"></p>
+                                <p id="esgPerformance"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        var axios = require("axios").default;
+                        function getData() {
+                            let input = document.getElementById('search-input').value
+                        
+                            var options = {
+                                method: 'GET',
+                                url: 'https://yh-finance.p.rapidapi.com/stock/v2/get-summary',
+                                params: {symbol: input, region: 'US'},
+                                headers: {
+                                'x-rapidapi-host': 'yh-finance.p.rapidapi.com',
+                                'x-rapidapi-key': '222f753218msh13f6a309fdd7a67p17497bjsnc7776f4f2159'
+                                }
+                            };
+                            
+                            axios.request(options).then(function (response) {
+
+                                document.getElementById("totalESG").innerHTML = response.data.esgScores.totalEsg.raw;
+                                document.getElementById("esgPerformance").innerHTML = response.data.esgScores.esgPerformance;
+                               
+                                
+                                //console.log(response.data.esgScores.totalEsg.raw); 
+                                console.log(response.data.esgScores.totalEsg.raw)
+
+                            }).catch(function (error) {
+                                console.error(error);
+                            });
+ 
+                        }
+                        
+                    </script>
             </div>
 
             <div class="feature-nav-bar col-md-4">
@@ -198,6 +240,27 @@
                 <br>
                 <p>Want to browse some Ratings? Learn more about your favorite companies!</p>
 
+            </div>
+
+            <a href="#esg-info"><button type="submit" class=""name ="continue" id="continue">What does this mean?</button></a>
+        </div>
+    </section>
+
+    <div class="background">
+        <img src="./images/background/computer-background.jpg" style="width:100%;height:80%;">
+    </div>
+
+    <section class="container">
+        <div class="row g-2 our-stuff" id="esg-info">
+            <!-- one -->
+            <div class="col-md-6 yay-info">
+                <h1>ESG Rating</h1>
+                <p>FILL THIS IN</p>
+            </div>
+            <!-- two -->
+            <div class="col-md-6 yay-info">
+                <h1>ESG Performance</h1>
+                <p>FILL THIS IN</p>
             </div>
         </div>
     </section>
